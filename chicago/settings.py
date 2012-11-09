@@ -20,8 +20,10 @@ DATABASES = {
     }
 }
 
+#database settings for Heroku
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -123,6 +125,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'gunicorn',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -153,3 +156,4 @@ LOGGING = {
         },
     }
 }
+
