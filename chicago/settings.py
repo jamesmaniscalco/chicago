@@ -78,6 +78,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJ_DIR, 'staticfiles'),
 )
 
 # List of finder classes that know how to find static files in
@@ -86,6 +87,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'dajaxice.finders.DajaxiceFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -95,8 +97,22 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', None)
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
+
+# list of template context processors
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+    
+)
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -134,6 +150,9 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'storages',
+    'dajaxice',
+    'dajax',
+    'chicago.gear',
 )
 
 # A sample logging configuration. The only tangible logging

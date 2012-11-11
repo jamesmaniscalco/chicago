@@ -4,6 +4,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+# import Dajaxice
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+dajaxice_autodiscover()
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'chicago.views.home', name='home'),
@@ -18,4 +23,7 @@ urlpatterns = patterns('',
     
     # login url
     url(r'^login/', 'chicago.gear.views.login'),
+
+    # enable Dajaxice
+    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 )
