@@ -18,11 +18,11 @@ def login(request):
     form = AuthenticationForm()
     return render_to_response('gear/login_form.html', {'form':form}, context_instance=RequestContext(request))
     
-#login processor with AJAX
-def login_submit(request):
-    return HttpRequest('Login submitted')
+# #login processor with AJAX
+# def login_submit(request):
+#     return HttpRequest('Login submitted')
 
-
+#default home view for app
 @login_required
 def default(request):
-    return render_to_response('default')
+    return HttpResponse('default')
