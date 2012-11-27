@@ -23,3 +23,6 @@ def login(request):
 @login_required
 def default(request):
     return HttpResponse('default')
+
+
+
