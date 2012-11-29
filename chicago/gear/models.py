@@ -73,5 +73,5 @@ class GearItem(models.Model):
 
     
     def __unicode__(self):
-        return unicode(self.model + "(" + self.make + ")")
+        return unicode("{0} ({1})".format(self.model, self.make))
 

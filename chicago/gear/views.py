@@ -22,7 +22,7 @@ def login(request):
 #default home view for app
 @login_required
 def default(request):
-    return HttpResponse('default')
+    return render_to_response('gear/home.html', context_instance=RequestContext(request))
 
 
 

@@ -5,6 +5,12 @@ from django.utils import simplejson
 from django.contrib.auth.models import User, Group
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.template.loader import render_to_string
+
+from chicago.gear.models import UserAccount, GearItem
+
+import itertools
+
 
 # AJAX login method
 @dajaxice_register
@@ -29,4 +35,24 @@ def login(request, form):
     
     # return appropriate response
     return simplejson.dumps(data)
+
+
+# return serialized list of all items in a user's possession
+@dajaxice_register
+def all_items(request):
+    user = request.user     # grab user sending request...
+    items_owned = GearItem.objects.filter(owner=user)   # list of gear items owned by the user
+    items_loaned = GearItem.objects.filter(holder=user).exclude(owner=user) # list of gear items held (but not owned) by the user
+    
+    # concatenate two querysets
+    items = itertools.chain(items_owned, items_loaned)
+    
+    # organize data into a dict for render_to_string
+    data = {'items':items, 'user':request.user}
+    
+    # and return to browser as a string
+    return render_to_string('gear/gear_items.json', data)
+    
+    
+    
 
