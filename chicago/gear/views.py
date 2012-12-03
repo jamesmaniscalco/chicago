@@ -23,6 +23,12 @@ def login(request):
 @login_required
 def default(request):
     return render_to_response('gear/home.html', context_instance=RequestContext(request))
+    
+
+#list of items associated with the user
+@login_required
+def items(request):
+    return render_to_response('gear/items.html', context_instance=RequestContext(request))
 
 
 

@@ -1,0 +1,17 @@
+{% extends 'gear/base.html' %}
+
+{% block content %}
+<p>My gear:</p>
+<div id="all_gear">
+    <p>Loading gear list...</p>
+</div>
+{% endblock %}
+
+
+{% block page_scripts %}
+<script language="javascript">
+    $(document).ready(function() {
+        populate_all_gear();
+    });
+</script>
+{% endblock %}

@@ -5,4 +5,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'chicago.views.home', name='home'),
     url(r'^/', 'chicago.gear.views.default'),
     url(r'login/', 'chicago.gear.views.login'),
+    url(r'items/', 'chicago.gear.views.items'),
 )

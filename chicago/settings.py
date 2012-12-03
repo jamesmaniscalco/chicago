@@ -30,6 +30,10 @@ DATABASES['default'] =  dj_database_url.config()
 #set root directory of Django project for setting relative paths for templates, etc.
 PROJ_DIR = os.path.abspath(os.path.dirname(__file__))
 
+#set login url for @login_required decorator
+LOGIN_URL = '/login/'
+
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

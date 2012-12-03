@@ -1,15 +1,16 @@
 {# template for returning list of gear items as json object #}
 {% load template_filters %}
 
-[
+
+{ "items": [
     {% for item in items %}{
-            'owner': {{ item.owner }}, 
-            'holder': {{ item.holder }}, 
-            'make': {{ item.make }}, 
-            'model': {{ item.model }}, 
-            'description': {{ item.description }},
-            'weight': {{ item|gear_item_weight:user }},
-            'status': {{ item.status }},
+            "owner": "{{ item.owner }}",
+            "holder": "{{ item.holder }}",
+            "make": "{{ item.make }}",
+            "model": "{{ item.model }}",
+            "description": "{{ item.description }}",
+            "weight": "{{ item|gear_item_weight:user }}",
+            "status": "{{ item.get_status_display }}"
         }{% if not forloop.last %} , {% endif %}
-    {% endfor %}
-]
+    {% endfor %}]
+}
