@@ -1,0 +1,35 @@
+{# Templates for ICanHaz / Mustache #}
+
+{% load template_filters %}
+
+{% verbatim %}
+
+<script id="gear_table" type="text/html">
+    <div class="table-wrapper">
+        <table id="gear_table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Weight</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            
+            <tbody></tbody>
+        </table>
+    </div>
+</script>
+
+<script id="gear_item" type="text/html">
+    <tr class="{{ status }}">
+        <th>{{ model }} ({{ make }})</th>
+        <td>{{ description }}</td>
+        <td>{{ weight }}</td>
+        <td>{{ status }}</td>
+        <td>Action</td>
+    </tr>
+</script>
+
+{% endverbatim %}
