@@ -23,13 +23,16 @@
 </script>
 
 <script id="gear_item" type="text/html">
-    <tr class="{{ status }}">
-        <th>{{ model }} ({{ make }})</th>
-        <td>{{ description }}</td>
-        <td>{{ weight }}</td>
-        <td>{{ status }}</td>
-        <td>Action</td>
+    <tr id="gear_{{ id }}" class="{{ status }}">
+        <th id="{{ id }}_model">{{ model }} ({{ make }})</th>
+        <td id="{{ id }}_description">{{ description }}</td>
+        <td id="{{ id }}_weight">{{ weight }}</td>
+        <td id="{{ id }}_status">{{ status }}</td>
+        <td id="{{ id }}_action">Action</td>
     </tr>
+</script>
+
+<script id="gear_item_checkout" type="text/html">
 </script>
 
 {% endverbatim %}

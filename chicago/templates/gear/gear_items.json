@@ -4,6 +4,7 @@
 {% autoescape off %}
 { "items": [
     {% for item in items %}{
+            "id": "{{ item.id }}",
             "owner": "{{ item.owner }}",
             "holder": "{{ item.holder }}",
             "make": "{{ item.make }}",
