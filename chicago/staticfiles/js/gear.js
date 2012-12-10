@@ -49,7 +49,28 @@ function populate_all_gear(){
 };
 
 
-// 
+// refresh an individual item in the view, provided with the right data (get from an AJAX request or some javascript object)
+function refill_item(id, item){
+    // generate new item
+    var new_item_html = ich.gear_item(item).hide();
+    // fade the old item out, and begin the callback to replace the old item with the new
+    $("#gear_"+id).fadeOut(166, function() {
+        $(this).replaceWith(new_item_html);
+        // fade the new item in (need to re-call with id because the old object has been deleted by replaceWith() )
+        $("#gear_"+id).fadeIn(166);
+    });
+};
+
+
+// refresh an individual item with an AJAX request and the above refill_item()
+function refresh_item(id){
+    // get the new item from the Dajaxice function, refill the item in the callback
+    Dajaxice.chicago.gear.get_item(function(data){
+        refill_item(id, data.items[0]);
+    }, 
+    // and pass the id to Dajaxice
+    {"id":id});
+};
 
 
 //
