@@ -50,10 +50,10 @@ class GearItem(models.Model):
     
     # current status of gear (e.g. "checked out", "missing")
     STATUS_CHOICES = (
-        ('i', 'checked in'),
-        ('o', 'checked out'),
+        ('in', 'stashed'),
+        ('out', 'equipped'),
     )
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='i')
+    status = models.CharField(max_length=3, choices=STATUS_CHOICES, default='i')
     
     #return weight in user's preferred unit
     def get_weight(self, user):

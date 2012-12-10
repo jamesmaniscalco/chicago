@@ -49,6 +49,9 @@ function populate_all_gear(){
 };
 
 
+// 
+
+
 //
 // Mustache / ICanHaz templates
 //

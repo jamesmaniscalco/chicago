@@ -54,9 +54,9 @@ def all_items(request):
     return render_to_string('gear/gear_items.json', data)
     
 
-#checkout individual item
+#equip individual item
 @dajaxice_register
-def checkout_item(request, id):
+def equip_item(request, id):
     user = request.user     # get the user sending AJAX request
     # get the item of gear requested
     try:
@@ -65,18 +65,18 @@ def checkout_item(request, id):
         return simplejson.dumps({'status':'error', 'errors':['item does not exist']})
     if item.holder != user: # if selected item is not in request.user's possession, return error
         return simplejson.dumps({'status':'error', 'errors':['item not available for checkout']})
-    if item.status == 'o':  # if item is already checked out, return error
-        return simplejson.dumps({'status':'error', 'errors':['item already checked out']})
+    if item.status == 'out':  # if item is already equipped, return error
+        return simplejson.dumps({'status':'error', 'errors':['item already equipped']})
     
-    # if all the above passes, checkout item and return success message
-    item.status = 'o'
+    # if all the above passes, equip item and return success message
+    item.status = 'out'
     item.save()
     return simplejson.dumps({'status':'success'})
         
 
-#checkin individual item
+#stash individual item
 @dajaxice_register
-def checkin_item(request, id):
+def stash_item(request, id):
     user = request.user     # get the user sending AJAX request
     # get the item of gear requested
     try:
@@ -85,11 +85,11 @@ def checkin_item(request, id):
         return simplejson.dumps({'status':'error', 'errors':['item does not exist']})
     if item.holder != user: # if selected item is not in request.user's possession, return error
         return simplejson.dumps({'status':'error', 'errors':['item not available for checkin']})
-    if item.status == 'i':  # if item is already checked out, return error
-        return simplejson.dumps({'status':'error', 'errors':['item already checked in']})
+    if item.status == 'in':  # if item is already stashed, return error
+        return simplejson.dumps({'status':'error', 'errors':['item already stashed']})
     
     # if all the above passes, checkin item and return success message
-    item.status = 'i'
+    item.status = 'in'
     item.save()
     return simplejson.dumps({'status':'success'})
     
