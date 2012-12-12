@@ -73,13 +73,8 @@ function refresh_item(id){
 };
 
 
-//
-// Mustache / ICanHaz templates
-//
 
-// basic table for showing gear items
-// ich.addTemplate('gear_table', '<div class="table-wrapper"><table id="gear_table"><thead><tr><th>Item</th><th>Description</th><th>Weight</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>')
-// template for new items in table
-// ich.addTemplate('gear_item', '<tr class="{{ status }}"><th>{{ model }} ({{ make }})</th><td>{{ description }}</td><td>{{ weight }}</td><td>{{ status }}</td><td>Action</td></tr>')
+
+
 
 
