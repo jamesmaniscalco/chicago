@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'storages',
     'dajaxice',
     'dajax',
+    'tastypie',
     'chicago.gear',
 )
 
