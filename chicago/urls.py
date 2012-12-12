@@ -10,8 +10,6 @@ dajaxice_autodiscover()
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'chicago.views.home', name='home'),
     url(r'^gear/', include('chicago.gear.urls')),
     url(r'^$', 'chicago.gear.views.default'),
 
