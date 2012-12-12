@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from chicago.gear.api import GearItemResource
 
 from tastypie.api import Api
 
