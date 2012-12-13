@@ -200,3 +200,6 @@ STATIC_URL = '//s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
+# Tastypie API settings
+API_LIMIT_PER_PAGE = 0  # unlimited responses in list view
+
