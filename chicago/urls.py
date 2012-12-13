@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     
     # login url
     url(r'^login/', 'chicago.gear.views.login'),
+    url(r'logout/', 'chicago.gear.views.logout'),
 
     # enable Dajaxice
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
