@@ -52,7 +52,26 @@ def all_items(request):
     
     # and return to browser as a string
     return render_to_string('gear/gear_items.json', data)
+
+
+#retrieve an individual item, with its current status (for refreshing items in the browser, etc.)
+@dajaxice_register
+def get_item(request, id):
+    # first, get the request user,
+    user = request.user
+    # then get the item.
+    try:
+        item = GearItem.objects.get(id=id)
+    except DoesNotExist:    # if selected item does not exist in database, return error
+        return simplejson.dumps({'status':'error', 'errors':['item does not exist']})
+    if item.holder != user and item.owner != user:
+        return simplejson.dumps({'status':'error', 'errors':['item only visible by its owner/holder']})
     
+    # return the item's information to the browser
+    items = [item]
+    data = {'items':items, 'user':user}
+    return render_to_string('gear/gear_items.json', data)
+
 
 #equip individual item
 @dajaxice_register
@@ -92,23 +111,5 @@ def stash_item(request, id):
     item.status = 'in'
     item.save()
     return simplejson.dumps({'status':'success'})
-    
-    
-#retrieve an individual item, with its current status (for refreshing items in the browser, etc.)
-@dajaxice_register
-def get_item(request, id):
-    # first, get the request user,
-    user = request.user
-    # then get the item.
-    try:
-        item = GearItem.objects.get(id=id)
-    except DoesNotExist:    # if selected item does not exist in database, return error
-        return simplejson.dumps({'status':'error', 'errors':['item does not exist']})
-    if item.holder != user and item.owner != user:
-        return simplejson.dumps({'status':'error', 'errors':['item only visible by its owner/holder']})
-    
-    # return the item's information to the browser
-    items = [item]
-    data = {'items':items, 'user':user}
-    return render_to_string('gear/gear_items.json', data)
+
 
