@@ -17,6 +17,11 @@ dajaxice_autodiscover()
 def login(request):
     form = AuthenticationForm()
     return render_to_response('gear/login_form.html', {'form':form}, context_instance=RequestContext(request))
+    
+
+#logout view
+def logout(request):
+    return HttpResponse('Successfully logged out.')
 
 
 #default home view for app
