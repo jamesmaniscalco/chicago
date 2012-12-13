@@ -1,8 +1,13 @@
 from django.conf.urls import patterns, include, url
+
+from tastypie.api import Api
+
 from chicago.gear.api import GearItemResource
 
+
 # initialize API resources
-gear_item_resource = GearItemResource()
+v1_api = Api(api_name='v1')
+v1_api.register(GearItemResource())
 
 urlpatterns = patterns('',
     # Examples:
@@ -10,5 +15,5 @@ urlpatterns = patterns('',
     url(r'^/', 'chicago.gear.views.default'),
     url(r'login/', 'chicago.gear.views.login'),
     url(r'items/', 'chicago.gear.views.items'),
-    url(r'api/', include(gear_item_resource.urls)),
+    url(r'api/', include(v1_api.urls)),
 )
