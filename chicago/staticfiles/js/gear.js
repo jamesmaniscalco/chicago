@@ -98,5 +98,18 @@ window.TastypieCollection = Backbone.Collection.extend({
 });
 
 
+/// Backbone models (extending the above Model and Collection)
 
+// set the API root url for use in Models
+var api_root = '/gear/api/v1/'
 
+// GearItem model
+var GearItem = TastypieModel.extend({
+    url: api_root + 'gearitem'
+});
+
+// GearItems collection (all items)
+var AllGearItems = TastypieCollection.extend({
+    model: GearItem,
+    url: api_root + 'gearitem'
+});

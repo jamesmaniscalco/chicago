@@ -5,8 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-
 from django.contrib.auth.models import User, Group
 
 from dajaxice.core import dajaxice_autodiscover
@@ -21,6 +21,7 @@ def login(request):
 
 #logout view
 def logout(request):
+    django_logout(request)
     return HttpResponse('Successfully logged out.')
 
 
