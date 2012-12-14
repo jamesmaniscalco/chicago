@@ -76,5 +76,18 @@ function refresh_item(id){
 
 
 
+/*
+ * MVC layout for Spine.js
+ */
+
+/// Models
+
+// GearItem model
+var GearItem = Spine.Model.setup("GearItem", ['id', 'owner', 'holder', 'make', 'model', 'description', 'weight', 'status']);
+GearItem.extend(Spine.Model.Local); // persist in local storage (HTML5)
 
 
+
+/// Controllers
+
+// 
